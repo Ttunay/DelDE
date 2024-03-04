@@ -4,3 +4,5 @@
 
 void deleteGnome();
 void deleteDE();
+void deleteKDE();
+void deleteXFCE();

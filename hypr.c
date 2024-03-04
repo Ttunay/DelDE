@@ -21,33 +21,50 @@ void deleteDE()
     printf("Выполнение дейсвия...\n");
     deleteGnome();
   } else {
-    printf("hello world");
+    printf("hello world\n");
   }
 }
 
 void deleteGnome() {
-    if (geteuid() != 0) {
-        printf("please, start program for use (sudo)\n");
-        return 1;
-    }
+  if (geteuid() != 0) {
+    printf("please, start program for use (sudo)\n");
+  }
 
-    // Выполняем команду для удаления пакетов GNOME
-    system("apt purge gnome*");
+  // Выполняем команду для удаления пакетов GNOME
+  system("sudo apt purge gnome*");
 
-    // Очищаем оставшиеся зависимости
-    system("apt autoremove");
+  // Очищаем оставшиеся зависимости
+  system("sudo apt autoremove");
 
-    // Удаляем остаточные конфигурационные файлы
-    system("rm -rf ~/.gnome");
-    system("rm -rf ~/.gnome2");
-    system("rm -rf ~/.config/gnome*");
-    system("rm -rf ~/.cache/gnome*");
-    system("rm -rf ~/.local/share/gnome*");
+  // Удаляем остаточные конфигурационные файлы
+  system("sudo rm -rf ~/.gnome");
+  system("sudo rm -rf ~/.gnome2");
+  system("sudo rm -rf ~/.config/gnome*");
+  system("sudo rm -rf ~/.cache/gnome*");
+  system("sudo rm -rf ~/.local/share/gnome*");
 
-    printf("GNOME deleted.\n");
-
+  printf("GNOME deleted. reboot system\n");
 }
 
+void deleteKde()
+{ 
+  if (geteuid() != 0) {
+    printf("please, start program for use (sudo)\n");
+  }
+
+  system("sudo apt-get purge kde-standard —autoremove");
+  system("sudo apt autoremove");
+  system("sudo apt autoclean");
+  system("sudo dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs dpkg -P");
+
+  system("sudo rm -rf /usr/share/kde5/");
+  system("sudo rm -rf /usr/share/kde5/");
+  system("sudo rm -rf /usr/share/config/k*rc");
+  system("sudo rm -rf /usr/share/applications/k*desktop");
+  system("sudo rm -rf /etc/sddm.conf.d/kde.conf");  
+  system("sudo rm -rf ~/.kde/");
+  system("sudo rm -rf ~/.local/share/kactivitymanagerd/");
+  }
 
 int main()
 {   
