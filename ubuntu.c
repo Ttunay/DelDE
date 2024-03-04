@@ -1,4 +1,4 @@
-#include "hypr.h"
+#include "ubuntu.h"
 
 
 struct hypr {
@@ -64,24 +64,67 @@ void deleteKde()
   system("sudo rm -rf /etc/sddm.conf.d/kde.conf");  
   system("sudo rm -rf ~/.kde/");
   system("sudo rm -rf ~/.local/share/kactivitymanagerd/");
+}
+void deleteXFCE()
+{
+  if (geteuid() != 0) {
+    printf("please, start program for use (sudo)\n");
   }
+  system("sudo dpkg -l | grep .xfce.");
+  printf("эти пакеты будут удалены");
 
+  system("sudo apt remove xfce4");
+  system("sudo apt autoremove");
+  system("sudo apt autoclean");
+  system("sudo apt purge xfce4");
+}
+void UbuntuAccept()
+{
+    struct hypr User;
+
+    printf("Hello this appication work on ubuntu or debian");
+  printf("Delete your DE? (Y/n): ");
+  scanf("%s", User.usr);
+
+  if (strcmp(User.usr, "Y") == 0 || strcmp(User.usr, "y") == 0)
+  {
+
+    printf("Выполнение действия...\n");
+    deleteDE();
+  }
+  else
+  {
+    printf("Операция отменена.\n");
+  }
+}
 int main()
 {   
   struct hypr User;
 
-  printf("Delete your DE? (Y/n): ");
-  scanf("%s",User.usr);
+  printf("pick your Linux\n");
 
-
-  if (strcmp(User.usr, "Y")  == 0|| strcmp(User.usr, "y") == 0) {
-
-    printf("Выполнение действия...\n");
-    deleteDE();
-
-
-  } else {
-    printf("Операция отменена.\n");
+  
+    char de[3][10] = {"Ubuntu", "Debian", "Arch"};
+    for(int i = 0; i < 3; i++)
+  {
+    printf("%s\n", de[i]);
   }
 
+      scanf("%s",User.usr);
+  if(strcmp(User.usr, "Ubuntu") == 0 || strcmp(User.usr,"ubuntu") == 0)
+  {
+    printf("Выполнение дейсвия...\n");
+    UbuntuAccept();
+  } else if(strcmp(User.usr, "Debian") == 0 || strcmp(User.usr,"debian") == 0)
+  {
+    printf("Выполнение дейсвия...\n");
+    UbuntuAccept();
+  } else if(strcmp(User.usr, "Arch") == 0 || strcmp(User.usr,"arch") == 0)
+  {
+    printf("Выполнение дейсвия...\n");
+    DeleteArch();
+  } else {
+    printf("not found your system...");
+  }
+  
 }
