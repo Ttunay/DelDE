@@ -4,6 +4,7 @@ struct hypr {
 };
 void deleteDE()
 {
+  
       struct hypr User;
 
     printf("какую DE удалить?\n");
@@ -64,14 +65,26 @@ void deleteKde()
 }
 void deleteXFCE()
 {
+        struct hypr User;
+
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
   }
-  system("sudo dpkg -l | grep .xfce.");
-  printf("эти пакеты будут удалены");
+  system("sudo pacman -Rns xcfe4 xcfe4-goodies lxdm ");
+    system("sudo systemctl disable lxdm");
 
-  system("sudo apt remove xfce4");
-  system("sudo apt autoremove");
-  system("sudo apt autoclean");
-  system("sudo apt purge xfce4");
+
+  printf("Reboot system now? (Y/n): ");
+  scanf("%s", User.usr);
+
+  if (strcmp(User.usr, "Y") == 0 || strcmp(User.usr, "y") == 0)
+  {
+
+   system("reboot");
+  }
+  else
+  {
+    printf("Операция отменена.\n");
+  }
+  // system(" pacman -Qs xcfe4");
 }

@@ -104,10 +104,10 @@ int main()
   printf("pick your Linux\n");
 
   
-    char de[3][10] = {"Ubuntu", "Debian", "Arch"};
+    char linux[3][10] = {"Ubuntu", "Debian", "Arch"};
     for(int i = 0; i < 3; i++)
   {
-    printf("%s\n", de[i]);
+    printf("%s\n", linux[i]);
   }
 
       scanf("%s",User.usr);
