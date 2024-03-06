@@ -1,8 +1,10 @@
 #include "ubuntu.h"
+
+
 struct hypr {
     char usr[10];
 };
-void deleteDE()
+void DeleteArch()
 {
   
       struct hypr User;
@@ -23,7 +25,7 @@ void deleteDE()
   }
 }
 
-void deleteGnome() {
+void deleteGnomeArch() {
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
   }
@@ -44,7 +46,7 @@ void deleteGnome() {
   printf("GNOME deleted. reboot system\n");
 }
 
-void deleteKde()
+void deleteKdeArch()
 { 
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
@@ -63,7 +65,7 @@ void deleteKde()
   system("sudo rm -rf ~/.kde/");
   system("sudo rm -rf ~/.local/share/kactivitymanagerd/");
 }
-void deleteXFCE()
+void deleteXFCEArch()
 {
         struct hypr User;
 
