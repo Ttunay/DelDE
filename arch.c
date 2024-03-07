@@ -31,10 +31,10 @@ void deleteGnomeArch() {
   }
 
   // Выполняем команду для удаления пакетов GNOME
-  system("sudo apt purge gnome*");
+  system("sudo pacman -Rns gnome*");
 
   // Очищаем оставшиеся зависимости
-  system("sudo apt autoremove");
+  system("sudo pacman -Rns $(pacman -Qdtq)");
 
   // Удаляем остаточные конфигурационные файлы
   system("sudo rm -rf ~/.gnome");
@@ -52,11 +52,10 @@ void deleteKdeArch()
     printf("please, start program for use (sudo)\n");
   }
 
-  system("sudo apt-get purge kde-standard —autoremove");
-  system("sudo apt autoremove");
-  system("sudo apt autoclean");
-  system("sudo dpkg -l | grep '^rc' | awk '{print $2}' | sudo xargs dpkg -P");
+  system("sudo pacman -Rns kde-applications kde-meta --noconfirm");
+  system("sudo pacman -Rns $(pacman -Qdtq)");
 
+  
   system("sudo rm -rf /usr/share/kde5/");
   system("sudo rm -rf /usr/share/kde5/");
   system("sudo rm -rf /usr/share/config/k*rc");
