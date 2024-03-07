@@ -30,13 +30,10 @@ void deleteGnome() {
     printf("please, start program for use (sudo)\n");
   }
 
-  // Выполняем команду для удаления пакетов GNOME
   system("sudo apt purge gnome*");
 
-  // Очищаем оставшиеся зависимости
   system("sudo apt autoremove");
 
-  // Удаляем остаточные конфигурационные файлы
   system("sudo rm -rf ~/.gnome");
   system("sudo rm -rf ~/.gnome2");
   system("sudo rm -rf ~/.config/gnome*");

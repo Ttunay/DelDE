@@ -30,13 +30,10 @@ void deleteGnomeArch() {
     printf("please, start program for use (sudo)\n");
   }
 
-  // Выполняем команду для удаления пакетов GNOME
   system("sudo pacman -Rns gnome*");
 
-  // Очищаем оставшиеся зависимости
   system("sudo pacman -Rns $(pacman -Qdtq)");
 
-  // Удаляем остаточные конфигурационные файлы
   system("sudo rm -rf ~/.gnome");
   system("sudo rm -rf ~/.gnome2");
   system("sudo rm -rf ~/.config/gnome*");
@@ -55,7 +52,7 @@ void deleteKdeArch()
   system("sudo pacman -Rns kde-applications kde-meta --noconfirm");
   system("sudo pacman -Rns $(pacman -Qdtq)");
 
-  
+
   system("sudo rm -rf /usr/share/kde5/");
   system("sudo rm -rf /usr/share/kde5/");
   system("sudo rm -rf /usr/share/config/k*rc");
