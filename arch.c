@@ -2,28 +2,46 @@
 
 
 struct hypr {
-    char usr[10];
+  char usr[10];
 };
 void DeleteArch()
 {
-  
-      struct hypr User;
 
-    printf("какую DE удалить?\n");
-    char de[3][10] = {"Gnome", "KDE", "XFCE"};
-    for(int i = 0; i < 3; i++)
+  struct hypr User;
+
+  printf("какую DE удалить?\n");
+  char de[4][10] = {"Gnome", "KDE", "XFCE","Hyprland"};
+  for(int i = 0; i < 3; i++)
   {
     printf("%s\n", de[i]);
   }
   scanf("%s",User.usr);
-  if(strcmp(User.usr, "Gnome") == 0 || strcmp(User.usr,"gnome") == 0)
+  if (strcasecmp(User.usr, "Gnome") == 0)
   {
-    printf("Выполнение дейсвия...\n");
-    deleteGnome();
-  } else {
-    printf("hello world\n");
+    printf("Выполнение действия...\n");
+    deleteGnomeArch();
+  } 
+  else if (strcasecmp(User.usr, "KDE") == 0)
+  {
+    printf("Выполнение действия...\n");
+    deleteKDEArch();
+  } 
+  else if (strcasecmp(User.usr, "XFCE") == 0)
+  {
+    printf("Выполнение действия...\n");
+    deleteXFCEArch();
+  } 
+  else if (strcasecmp(User.usr, "Hyperland") == 0)
+  {
+    printf("Выполнение действия...\n");
+    deleteXFCEArch();
+  } 
+  else
+{
+    printf("DE не найдено\n");
   }
-}
+} 
+
 
 void deleteGnomeArch() {
   if (geteuid() != 0) {
@@ -43,7 +61,7 @@ void deleteGnomeArch() {
   printf("GNOME deleted. reboot system\n");
 }
 
-void deleteKdeArch()
+void deleteKDEArch()
 { 
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
@@ -63,13 +81,13 @@ void deleteKdeArch()
 }
 void deleteXFCEArch()
 {
-        struct hypr User;
+  struct hypr User;
 
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
   }
   system("sudo pacman -Rns xcfe4 xcfe4-goodies lxdm ");
-    system("sudo systemctl disable lxdm");
+  system("sudo systemctl disable lxdm");
 
 
   printf("Reboot system now? (Y/n): ");
@@ -78,10 +96,10 @@ void deleteXFCEArch()
   if (strcmp(User.usr, "Y") == 0 || strcmp(User.usr, "y") == 0)
   {
 
-   system("reboot");
+    system("reboot");
   }
   else
-  {
+{
     printf("Операция отменена.\n");
   }
   // system(" pacman -Qs xcfe4");

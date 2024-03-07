@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <time.h>
 #include <stdlib.h>
 
 
@@ -10,4 +9,9 @@ void deleteDE();
 void deleteKDE();
 void deleteXFCE();
 void UbuntuAccept();
+
+
 void DeleteArch();
+void deleteGnomeArch();
+void deleteKDEArch();
+void deleteXFCEArch();

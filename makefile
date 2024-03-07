@@ -4,7 +4,7 @@ LDFLAGS =
 
 SRCS = ubuntu.c arch.c
 OBJS = $(SRCS:.c=.o)
-TARGET = DE
+	TARGET = DE
 
 .PHONY: all clean
 

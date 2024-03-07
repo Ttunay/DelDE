@@ -7,20 +7,31 @@ struct hypr {
 
 void deleteDE()
 {
-      struct hypr User;
+  struct hypr User;
 
-    printf("какую DE удалить?\n");
-    char de[3][10] = {"Gnome", "KDE", "XFCE"};
-    for(int i = 0; i < 3; i++)
+  printf("какую DE удалить?\n");
+  char de[3][10] = {"Gnome", "KDE", "XFCE"};
+  for(int i = 0; i < 3; i++)
   {
     printf("%s\n", de[i]);
   }
   scanf("%s",User.usr);
-  if(strcmp(User.usr, "Gnome") == 0 || strcmp(User.usr,"gnome") == 0)
+  if(strcasecmp(User.usr, "Gnome") == 0)
   {
     printf("Выполнение дейсвия...\n");
     deleteGnome();
-  } else {
+  } 
+  else if (strcasecmp(User.usr, "kde") == 0)
+  {
+    printf("Выполнение действия...\n");
+    deleteKde();
+  } 
+  else if (strcasecmp(User.usr, "xfce") == 0)
+  {
+    printf("Выполнение действия...\n");
+    deleteXFCE();
+  }   
+  else {
     printf("hello world\n");
   }
 }
@@ -77,20 +88,20 @@ void deleteXFCE()
 }
 void UbuntuAccept()
 {
-    struct hypr User;
+  struct hypr User;
 
-    printf("Hello this appication work on ubuntu or debian");
+  printf("Hello this appication work on ubuntu or debian");
   printf("Delete your DE? (Y/n): ");
   scanf("%s", User.usr);
 
-  if (strcmp(User.usr, "Y") == 0 || strcmp(User.usr, "y") == 0)
+  if (strcasecmp(User.usr, "y") == 0)
   {
 
     printf("Выполнение действия...\n");
     deleteDE();
-  }
+  } 
   else
-  {
+{
     printf("Операция отменена.\n");
   }
 }
@@ -100,28 +111,28 @@ int main()
 
   printf("pick your Linux\n");
 
-  
-    char linuxes[3][10] = {"Ubuntu", "Debian", "Arch"};
-    for(int i = 0; i < 3; i++)
+
+  char linuxes[3][10] = {"Ubuntu", "Debian", "Arch"};
+  for(int i = 0; i < 3; i++)
   {
     printf("%s\n", linuxes[i]);
   }
 
-      scanf("%s",User.usr);
-  if(strcmp(User.usr, "Ubuntu") == 0 || strcmp(User.usr,"ubuntu") == 0)
+  scanf("%s",User.usr);
+  if(strcasecmp(User.usr, "Ubuntu") == 0)
   {
     printf("Выполнение дейсвия...\n");
     UbuntuAccept();
-  } else if(strcmp(User.usr, "Debian") == 0 || strcmp(User.usr,"debian") == 0)
+  } else if(strcasecmp(User.usr, "Debian") == 0)
   {
     printf("Выполнение дейсвия...\n");
     UbuntuAccept();
-  } else if(strcmp(User.usr, "Arch") == 0 || strcmp(User.usr,"arch") == 0)
+  } else if(strcasecmp(User.usr, "Arch") == 0)
   {
     printf("Выполнение дейсвия...\n");
     DeleteArch();
   } else {
     printf("not found your system...");
   }
-  
+
 }
