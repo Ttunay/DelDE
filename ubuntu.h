@@ -15,3 +15,4 @@ void DeleteArch();
 void deleteGnomeArch();
 void deleteKDEArch();
 void deleteXFCEArch();
+void deleteHYPERLANDArch();

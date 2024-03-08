@@ -24,7 +24,7 @@ void deleteDE()
   else if (strcasecmp(User.usr, "kde") == 0)
   {
     printf("Выполнение действия...\n");
-    deleteKde();
+    deleteKDE();
   } 
   else if (strcasecmp(User.usr, "xfce") == 0)
   {
@@ -54,7 +54,7 @@ void deleteGnome() {
   printf("GNOME deleted. reboot system\n");
 }
 
-void deleteKde()
+void deleteKDE()
 { 
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");

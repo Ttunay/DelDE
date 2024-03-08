@@ -34,7 +34,7 @@ void DeleteArch()
   else if (strcasecmp(User.usr, "Hyperland") == 0)
   {
     printf("Выполнение действия...\n");
-    deleteXFCEArch();
+    deleteHYPERLANDArch();
   } 
   else
 {
@@ -42,7 +42,14 @@ void DeleteArch()
   }
 } 
 
+void deleteHYPERLANDArch()
+{
+  printf("not working");
 
+    if (geteuid() != 0) {
+    printf("please, start program for use (sudo)\n");
+  }
+}
 void deleteGnomeArch() {
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
