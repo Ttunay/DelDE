@@ -10,7 +10,7 @@ void DeleteArch()
   struct hypr User;
 
   printf("какую DE удалить?\n");
-  char de[4][10] = {"Gnome", "KDE", "XFCE","Hyprland"};
+  char de[4][10] = {"Gnome", "KDE", "XFCE",};
   for(int i = 0; i < 3; i++)
   {
     printf("%s\n", de[i]);
@@ -31,25 +31,11 @@ void DeleteArch()
     printf("Выполнение действия...\n");
     deleteXFCEArch();
   } 
-  else if (strcasecmp(User.usr, "Hyperland") == 0)
-  {
-    printf("Выполнение действия...\n");
-    deleteHYPERLANDArch();
-  } 
   else
 {
     printf("DE не найдено\n");
   }
 } 
-
-void deleteHYPERLANDArch()
-{
-  printf("not working");
-
-    if (geteuid() != 0) {
-    printf("please, start program for use (sudo)\n");
-  }
-}
 void deleteGnomeArch() {
   if (geteuid() != 0) {
     printf("please, start program for use (sudo)\n");
